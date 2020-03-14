@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xsi:schemaLocation="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<head>
+    <meta charset="UTF-8">
+    <title>Message list</title>
+</head>
+<body>
+<div>
+    <form method="post" action="/">
+        <input type="text" name="text" placeholder="message">
+        <input type="text" name="tag" placeholder="tag">
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div>Message list</div>
+<form method="post" action="filter" name="filter">
+    <input type="text" name="filter">
+    <button type="submit" value="Filter">Filter</button>
+</form>
+<div th:each="message : ${messages}">
+    <b th:text="${message.id}"/>
+    <span th:text="${message.text}"/>
+    <i th:text="${message.tag}"/>
+</div>
+</body>
+</html>

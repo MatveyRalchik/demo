@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
-import com.example.demo.domain.Message;
+import com.example.demo.domains.Message;
 import com.example.demo.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,17 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class GreetingController {
+public class MainController {
 
     @Autowired
     private MessageRepository messageRepository;
-
-    @GetMapping("/")
-//    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-    public String greeting() {
-        //model.addAttribute("name", name);
-        return "greeting";
-    }
 
     @GetMapping("/main")
     public String main(Model model) {

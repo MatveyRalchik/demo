@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xsi:schemaLocation="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <head>
     <meta charset="UTF-8">
-    <title>Greeting started: serving Web content</title>
+    <title>Start</title>
 </head>
 <body>
-<div>Hello, user</div>
+
+
+<!--<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
 <a th:href="@{/main}">Main page</a>
+
+<form sec:authorize="!isAuthenticated()" th:action="@{/login}" method="post">
+    <input type="submit" value="Sign in"/>
+</form>
+
+<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
+<h2>Welcome</h2>
+<p>Spring Security Thymeleaf tutorial</p>
+<div sec:authorize="hasRole('USER')">Text visible to user.</div>
+<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+<div sec:authorize="isAuthenticated()">Text visible only to authenticated users.</div>
+<div sec:authorize="!isAuthenticated()">Text visible only to unauthenticated users.</div>
+Authenticated username: <b sec:authentication="name"></b>
+<!--Authenticated user roles:-->
+<!--<div sec:authentication="principal.authorities"></div>-->
+
 </body>
 </html>

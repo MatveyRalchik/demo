@@ -3,21 +3,22 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <head>
     <meta charset="UTF-8">
-    <title>Message list</title>
+    <title>Main</title>
 </head>
 <body>
 <div>
-    <form method="post" action="/">
+    <form method="post" th:action="@{/main}">
         <input type="text" name="text" placeholder="message">
         <input type="text" name="tag" placeholder="tag">
-        <button type="submit">Submit</button>
+        <button type="submit">Add</button>
     </form>
 </div>
 <div>Message list</div>
-<form method="post" action="filter" name="filter">
-    <input type="text" name="filter">
+<form method="post" th:action="@{/filter}">
+    <input type="text" name="filter" placeholder="filter">
     <button type="submit" value="Filter">Filter</button>
 </form>
+
 <div th:each="message : ${messages}">
     <b th:text="${message.id}"/>
     <span th:text="${message.text}"/>

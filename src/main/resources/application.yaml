@@ -24,6 +24,7 @@ spring.datasource:
   url: jdbc:h2:file:./.h2/demo
   username: sa
   password:
+
 spring.jpa.hibernate.ddl-auto: update
 
 server:

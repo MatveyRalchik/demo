@@ -1,8 +1,10 @@
-package com.example.demo.controllers;
+package com.example.demo.controller;
 
-import com.example.demo.domains.Message;
-import com.example.demo.repositories.MessageRepository;
+import com.example.demo.domain.Message;
+import com.example.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,12 @@ public class MainController {
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String text, @RequestParam String tag, Model model) {
+    public String add(
+            @AuthenticationPrincipal User user,
+            @RequestParam String text,
+            @RequestParam String tag,
+            Model model
+    ) {
         if (!text.isEmpty() && !tag.isEmpty()) {
             Message message = new Message(text, tag);
             messageRepository.save(message);

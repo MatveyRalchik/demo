@@ -1,8 +1,8 @@
-package com.example.demo.controllers;
+package com.example.demo.controller;
 
-import com.example.demo.domains.Role;
-import com.example.demo.domains.User;
-import com.example.demo.repositories.UserRepository;
+import com.example.demo.domain.Role;
+import com.example.demo.domain.User;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ public class RegistrationController {
 
         if (userFromDB != null) {
             model.addAttribute("message", "User exists!");
-            return "redirect";
+            return "registration";
         }
 
         user.setActive(true);

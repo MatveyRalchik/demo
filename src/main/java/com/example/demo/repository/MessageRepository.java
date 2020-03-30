@@ -1,6 +1,6 @@
-package com.example.demo.repositories;
+package com.example.demo.repository;
 
-import com.example.demo.domains.Message;
+import com.example.demo.domain.Message;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -13,9 +13,11 @@
         <button type="submit">Add</button>
     </form>
 </div>
+
 <div>Message list</div>
-<form method="post" th:action="@{/filter}">
-    <input type="text" name="filter" placeholder="filter">
+
+<form method="get" th:action="@{/main}">
+    <input type="text" name="filter" placeholder="filter" th:value="${filter}">
     <button type="submit" value="Filter">Filter</button>
 </form>
 
@@ -25,5 +27,6 @@
     <i th:text="${message.tag}"/>
     <strong th:text="${message.authorName}"/>
 </div>
+
 </body>
 </html>

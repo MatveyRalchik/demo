@@ -1,10 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Message;
+import com.example.demo.domain.User;
 import com.example.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +32,7 @@ public class MainController {
             Model model
     ) {
         if (!text.isEmpty() && !tag.isEmpty()) {
-            Message message = new Message(text, tag);
+            Message message = new Message(text, tag, user);
             messageRepository.save(message);
         }
         Iterable<Message> messages = messageRepository.findAll();

@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xsi:schemaLocation="http://www.thymeleaf.org"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>Micro blog</title>
 </head>
 <body>
+
+<div>
+    <form sec:authorize="!isAuthenticated()" th:action="@{/login}" method="post">
+        <input type="submit" value="Sign in"/>
+    </form>
+    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <span><a href="/user">User list</a></span>
+</div>
+
 <div>
     <form method="post" th:action="@{/main}">
         <input type="text" name="text" placeholder="message">

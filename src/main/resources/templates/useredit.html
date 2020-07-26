@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
+<head>
+    <meta charset="UTF-8">
+    <title>User edit</title>
+</head>
+<body>
+<h2>User edit</h2>
+<span><a href="/user">User list</a></span>
+<form action="#" th:action="@{/user}" th:object="${user}" method="post">
+    <input type="text" th:field="*{username}">
+    <div th:each="role: ${roles}">
+        <input type="checkbox" th:field="*{roles}" th:value="${role}"/>
+        <label th:for="${#ids.prev('roles')}" th:text="${role}"/>
+    </div>
+    <input type="hidden" th:field="*{id}">
+<!--    <input type="hidden" th:field="*{active}">-->
+<!--    <input type="hidden" th:field="*{password}">-->
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.ralchik.demo.repository;
 
-import com.example.demo.domain.Message;
+import com.ralchik.demo.domain.Message;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

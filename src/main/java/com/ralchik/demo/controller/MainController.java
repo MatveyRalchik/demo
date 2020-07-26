@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.ralchik.demo.controller;
 
-import com.example.demo.domain.Message;
-import com.example.demo.domain.User;
-import com.example.demo.repository.MessageRepository;
+import com.ralchik.demo.domain.Message;
+import com.ralchik.demo.domain.User;
+import com.ralchik.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
+    private final MessageRepository messageRepository;
 
-    @Autowired
-    private MessageRepository messageRepository;
+    public MainController(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
 
     @GetMapping("/main")
     public String main(

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
+<head>
+    <meta charset="UTF-8">
+    <title>User list</title>
+</head>
+<body>
+<h2>User list</h2>
+<span><a href="/main">Main page</a></span>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"/>
+        <td th:text="${#strings.setJoin(user.roles, ', ')}"/>
+        <td><a th:href="@{/user/{id}(id=${user.id})}">edit</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

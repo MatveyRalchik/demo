@@ -1,31 +1,34 @@
-package com.example.demo.controller;
+package com.ralchik.demo.controller;
 
-import com.example.demo.domain.Role;
-import com.example.demo.domain.User;
-import com.example.demo.repository.UserRepository;
+import com.ralchik.demo.domain.Role;
+import com.ralchik.demo.domain.User;
+import com.ralchik.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collections;
 
 @Controller
+@RequestMapping("/registration")
 public class RegistrationController {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @GetMapping("/registration")
+    public RegistrationController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping
     public String registration() {
         return "registration";
     }
 
-    @PostMapping("/registration")
+    @PostMapping
     public String addUser(User user, Model model) {
-        User userFromDB = userRepository.findByUsername(user.getUsername());
-
-        if (userFromDB != null) {
+        if (userRepository.existsByUsername(user.getUsername())) {
             model.addAttribute("message", "User exists!");
             return "registration";
         }

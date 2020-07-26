@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.ralchik.demo.domain;
 
 import javax.persistence.*;
 
@@ -21,7 +21,7 @@ public class Message {
     }
 
     public String getAuthorName() {
-        return  author != null ? author.getUsername() : "<none>";
+        return author != null ? author.getUsername() : "<none>";
     }
 
     public Integer getId() {

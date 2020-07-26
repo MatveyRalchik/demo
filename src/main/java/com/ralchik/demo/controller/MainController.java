@@ -3,7 +3,6 @@ package com.ralchik.demo.controller;
 import com.ralchik.demo.domain.Message;
 import com.ralchik.demo.domain.User;
 import com.ralchik.demo.repository.MessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

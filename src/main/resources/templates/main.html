@@ -17,9 +17,10 @@
 </div>
 
 <div>
-    <form method="post" th:action="@{/main}">
+    <form method="post" th:action="@{/main}" enctype="multipart/form-data">
         <input type="text" name="text" placeholder="message">
         <input type="text" name="tag" placeholder="tag">
+        <input type="file" name="file">
         <button type="submit">Add</button>
     </form>
 </div>
@@ -36,6 +37,9 @@
     <span th:text="${message.text}"/>
     <i th:text="${message.tag}"/>
     <strong th:text="${message.authorName}"/>
+    <div>
+        <img th:src="|/img/${message.filename}|" th:if="${message.filename} != null">
+    </div>
 </div>
 
 </body>

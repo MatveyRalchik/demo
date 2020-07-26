@@ -10,6 +10,7 @@ spring.datasource:
 spring.jpa.hibernate.ddl-auto: update
 server:
   port: 80
+upload.path: /users/Matvey/IdeaProjects/demo/uploads
 
 ---
 spring.profiles: dev

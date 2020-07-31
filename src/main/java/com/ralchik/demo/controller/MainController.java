@@ -27,7 +27,7 @@ public class MainController {
         this.messageRepository = messageRepository;
     }
 
-    @GetMapping("/main")
+    @GetMapping
     public String main(
             @RequestParam(required = false, defaultValue = "") String filter,
             Model model
@@ -41,7 +41,7 @@ public class MainController {
         return "main";
     }
 
-    @PostMapping("/main")
+    @PostMapping
     public String add(
             @AuthenticationPrincipal User user,
             @RequestParam String text,

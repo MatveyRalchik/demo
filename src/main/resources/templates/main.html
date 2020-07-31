@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 <head>
-    <meta charset="UTF-8">
-    <title>Micro blog</title>
+    <title>Main page</title>
+    <div th:replace="fragment/common :: header"/>
 </head>
 <body>
-
+<div th:replace="fragment/common :: menu"/>
+<h2>Main page</h2>
 <div>
     <form sec:authorize="!isAuthenticated()" th:action="@{/login}" method="post">
         <input type="submit" value="Sign in"/>
@@ -17,7 +18,7 @@
 </div>
 
 <div>
-    <form method="post" th:action="@{/main}" enctype="multipart/form-data">
+    <form method="post" th:action="@{/}" enctype="multipart/form-data">
         <input type="text" name="text" placeholder="message">
         <input type="text" name="tag" placeholder="tag">
         <input type="file" name="file">
@@ -27,7 +28,7 @@
 
 <div>Message list</div>
 
-<form method="get" th:action="@{/main}">
+<form method="get" th:action="@{/}">
     <input type="text" name="filter" placeholder="filter" th:value="${filter}">
     <button type="submit" value="Filter">Filter</button>
 </form>
@@ -38,7 +39,7 @@
     <i th:text="${message.tag}"/>
     <strong th:text="${message.authorName}"/>
     <div>
-        <img th:src="|/img/${message.filename}|" th:if="${message.filename} != null">
+        <img width="200" th:src="|/img/${message.filename}|" th:if="${message.filename} != null">
     </div>
 </div>
 

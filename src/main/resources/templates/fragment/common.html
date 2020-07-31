@@ -1,8 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="headerFragment">
-    <meta charset="UTF-8">
-    <title>Micro blog</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
+<head>
+    <title>Common template</title>
+    <div th:fragment="header">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+              integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+              crossorigin="anonymous">
+    </div>
 </head>
-<body/>
+<body>
+<div th:fragment="menu">
+<!--    <span><b th:if="${#httpServletRequest.requestURI=='/user'}">Users</b></span>-->
+    <span><a href="/">Main</a></span>
+    <span><a href="/user">Users</a></span>
+    <span><a href="/registration">Registration</a></span>
+
+<!--    <form sec:authorize="!isAuthenticated()" th:action="@{/login}" method="post">-->
+<!--        <input type="submit" value="Sign in"/>-->
+<!--    </form>-->
+<!--    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">-->
+<!--        <input type="submit" value="Sign Out"/>-->
+<!--    </form>-->
+
+
+    <span><a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a></span>
+    <span><a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></span>
+</div>
+</body>
 </html>

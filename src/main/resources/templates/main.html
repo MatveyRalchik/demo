@@ -7,15 +7,14 @@
 <body>
 <div th:replace="fragment/common :: menu"/>
 <h2>Main page</h2>
-<div>
-    <form sec:authorize="!isAuthenticated()" th:action="@{/login}" method="post">
-        <input type="submit" value="Sign in"/>
-    </form>
-    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
-    <span><a href="/user">User list</a></span>
-</div>
+
+<!--<sec:authorize access="hasRole('USER')">Text visible to user.</sec:authorize>-->
+<!--<sec:authorize access="isAuthenticated()">isAuthenticated()</sec:authorize>-->
+<!--<sec:authorize access="hasRole('ADMIN')">Text visible to admin.</sec:authorize>-->
+<!--<div sec:authorize="hasAuthority('USER')">hasRole</div>-->
+<!--<div sec:authorize="isAuthenticated()">Text visible only to authenticated users.</div>-->
+<!--<div sec:authorize="!isAuthenticated()">Text visible only to unauthenticated users.</div>-->
+<!--<div>Authenticated username: <b sec:authentication="name"></b></div>-->
 
 <div>
     <form method="post" th:action="@{/}" enctype="multipart/form-data">
@@ -26,7 +25,7 @@
     </form>
 </div>
 
-<div>Message list</div>
+<h3>Posts</h3>
 
 <form method="get" th:action="@{/}">
     <input type="text" name="filter" placeholder="filter" th:value="${filter}">

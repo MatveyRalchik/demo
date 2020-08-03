@@ -7,7 +7,7 @@
 <body>
 <div th:replace="fragment/common :: menu"/>
 <h2>User edit</h2>
-<span><a href="/user">User list</a></span>
+
 <form action="#" th:action="@{/user}" th:object="${user}" method="post">
     <input type="text" th:field="*{username}">
     <div th:each="role: ${roles}">
@@ -17,5 +17,6 @@
     <input type="hidden" th:field="*{id}">
     <button type="submit">Save</button>
 </form>
+
 </body>
 </html>

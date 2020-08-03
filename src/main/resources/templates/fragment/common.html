@@ -17,17 +17,12 @@
     <span><a href="/">Main</a></span>
     <span><a href="/user">Users</a></span>
     <span><a href="/registration">Registration</a></span>
-
-<!--    <form sec:authorize="!isAuthenticated()" th:action="@{/login}" method="post">-->
-<!--        <input type="submit" value="Sign in"/>-->
-<!--    </form>-->
-<!--    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">-->
-<!--        <input type="submit" value="Sign Out"/>-->
-<!--    </form>-->
-
-
     <span><a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a></span>
-    <span><a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></span>
+    <span>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+        <i sec:authentication="name"></i>
+        <i sec:authorize="hasAuthority('ADMIN')">(admin)</i>
+    </span>
 </div>
 </body>
 </html>
